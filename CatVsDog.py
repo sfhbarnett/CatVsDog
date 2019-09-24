@@ -12,15 +12,17 @@ class CatVsDog(Dataset):
         self.transform = transform
 
     def __len__(self):
-        return len(self.filelist)
+        return len(self.images)
 
     def __getitem__(self, idx):
         if torch.is_tensor(idx):
             idx = idx.tolist()
 
         img_name = os.path.join(self.root_dir,self.images[idx])
-        image = Image.open(img_name)
+        image = self.transform(Image.open(img_name))
         annotation = self.images[idx][0:3]
+        labeldict = {"cat": 1, "dog": 0}
+        annotation = labeldict[annotation]
         sample = {'image':image, 'annotation':annotation}
         return sample
 
