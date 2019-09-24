@@ -32,7 +32,6 @@ for epoch in range(num_epochs):
         labels = data['annotation']
         optimizer.zero_grad()
         outputs = net(inputs)
-
         loss = criterion(outputs, labels)
         loss.backward()
         optimizer.step()

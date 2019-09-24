@@ -21,8 +21,9 @@ class CatVsDog(Dataset):
         img_name = os.path.join(self.root_dir,self.images[idx])
         image = self.transform(Image.open(img_name))
         annotation = self.images[idx][0:3]
-        labeldict = {"cat": 1, "dog": 0}
-        annotation = labeldict[annotation]
+        labeldict = {"cat": 0, "dog": 1}
+        if annotation == 'cat' or annotation == 'dog':
+            annotation = labeldict[annotation]
         sample = {'image':image, 'annotation':annotation}
         return sample
 
