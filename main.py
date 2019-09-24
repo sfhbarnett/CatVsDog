@@ -5,10 +5,11 @@ import CatVsDog
 import os
 
 
-mainpath = r'C:\Users\MBISFHB\Documents\code\Python Scripts\Dogsvscats'
+#mainpath = r'C:\Users\MBISFHB\Documents\code\Python Scripts\Dogsvscats\'
+mainpath = '/Users/samuelbarnett/Documents/DL_data/'
 
-trainpath = mainpath+r'\train'
-testpath = mainpath+r'\test1'
+trainpath = mainpath+r'train'
+testpath = mainpath+r'test1'
 
 trainset = os.listdir(trainpath)
 data = CatVsDog.CatVsDog(trainset,trainpath)
