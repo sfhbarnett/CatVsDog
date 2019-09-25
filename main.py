@@ -8,17 +8,16 @@ from torchvision import transforms
 
 num_epochs = 15
 
-#mainpath = r'C:\Users\MBISFHB\Documents\code\Python Scripts\Dogsvscats'
-mainpath = '/Users/samuelbarnett/Documents/DL_data/'
+mainpath = r'C:\Users\MBISFHB\Documents\code\Python Scripts\Dogsvscats'
+#mainpath = '/Users/samuelbarnett/Documents/DL_data/'
 
-trainpath = mainpath+r'train'
+trainpath = mainpath+r'\train'
 testpath = mainpath+r'test1'
 
 trainset = os.listdir(trainpath)
-dataset = CatVsDog.CatVsDog(trainset,trainpath,transform=transforms.Compose([transforms.Resize((32,32)),transforms.ToTensor()]))
+dataset = CatVsDog.CatVsDog(trainset,trainpath,transform=transforms.Compose([transforms.Resize((34,34)),transforms.ToTensor()]),train=1)
 
 trainloader = torch.utils.data.DataLoader(dataset,batch_size=4,shuffle=True,num_workers=0)
-
 
 net = Net.Net()
 criterion = nn.CrossEntropyLoss()
