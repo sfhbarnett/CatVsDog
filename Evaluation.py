@@ -5,8 +5,8 @@ from torchvision import transforms
 import csv
 
 
-#mainpath = r'C:\Users\MBISFHB\Documents\code\Python Scripts\Dogsvscats'
-mainpath = '/Users/samuelbarnett/Documents/DL_data/'
+mainpath = r'C:\Users\MBISFHB\Documents\code\Python Scripts\Dogsvscats'
+#mainpath = '/Users/samuelbarnett/Documents/DL_data/'
 
 trainpath = mainpath+r'\train'
 testpath = mainpath+r'test'
