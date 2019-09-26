@@ -6,12 +6,12 @@ import torch.optim as optim
 import torch.nn as nn
 from torchvision import transforms
 
-num_epochs = 15
+num_epochs = 30
 
-mainpath = r'C:\Users\MBISFHB\Documents\code\Python Scripts\Dogsvscats'
-#mainpath = '/Users/samuelbarnett/Documents/DL_data/'
+#mainpath = r'C:\Users\MBISFHB\Documents\code\Python Scripts\Dogsvscats' # Windows
+mainpath = '/Users/samuelbarnett/Documents/DL_data/' # Mac
 
-trainpath = mainpath+r'\train'
+trainpath = mainpath+r'train'
 testpath = mainpath+r'test1'
 
 trainset = os.listdir(trainpath)

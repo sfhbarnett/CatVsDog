@@ -5,11 +5,11 @@ from torchvision import transforms
 import csv
 
 
-mainpath = r'C:\Users\MBISFHB\Documents\code\Python Scripts\Dogsvscats'
-#mainpath = '/Users/samuelbarnett/Documents/DL_data/'
+#mainpath = r'C:\Users\MBISFHB\Documents\code\Python Scripts\Dogsvscats'
+mainpath = '/Users/samuelbarnett/Documents/DL_data/'
 
 trainpath = mainpath+r'\train'
-testpath = mainpath+r'\test'
+testpath = mainpath+r'test'
 
 testset = os.listdir(testpath)
 dataset = CatVsDog.CatVsDog(testset,testpath,transform=transforms.Compose([transforms.Resize((32,32)),transforms.ToTensor()]),train=0)
