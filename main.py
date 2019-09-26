@@ -13,10 +13,12 @@ mainpath = r'C:\Users\MBISFHB\Documents\code\Python Scripts\Dogsvscats' # Window
 
 trainpath = mainpath+r'\train'
 testpath = mainpath+r'test1'
+reportrate = 1000
 
 trainset = os.listdir(trainpath)
-imsize = 40
-dataset = CatVsDog.CatVsDog(trainset,trainpath,transform=transforms.Compose([transforms.Resize((imsize,imsize)),transforms.ToTensor()]),train=1)
+imsize = 100
+tforms = transforms.Compose([transforms.Resize((imsize,imsize)),transforms.ToTensor(),transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+dataset = CatVsDog.CatVsDog(trainset,trainpath,transform=tforms,train=1)
 
 trainloader = torch.utils.data.DataLoader(dataset,batch_size=4,shuffle=True,num_workers=0)
 
@@ -27,7 +29,6 @@ optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 for epoch in range(num_epochs):
     running_loss = 0.0
     for i, data in enumerate(trainloader,0):
-
         inputs = data['image']
         labels = data['annotation']
         optimizer.zero_grad()
@@ -36,10 +37,12 @@ for epoch in range(num_epochs):
         loss.backward()
         optimizer.step()
         running_loss += loss.item()
-        if i % 2000 == 1999:
+        if i % reportrate == reportrate-1:
             print('[%d, %5d] loss: %.3f' %
-                  (epoch + 1, i + 1, running_loss / 2000))
+                  (epoch + 1, i + 1, running_loss / reportrate))
             running_loss = 0.0
+
+
 print('Finished Training')
 torch.save(net,mainpath+'\savedmodel.pt')
 print('Model saved')
